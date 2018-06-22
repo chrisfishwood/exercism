@@ -17,10 +17,16 @@ var values = map[string]int{
 //Score - Computes the scrabble score of 'word' based on the character values in 'values'
 func Score(word string) int {
 	word = strings.ToUpper(word)
-	score := 0
-	for i := 0; i < len(word); i++ {
-		char := string(word[i])
-		score += values[char]
+	return BuildScore(word, 0)
+}
+
+//BuildScore - Recursive function that sums the scrabble score of the characters of 'word'
+func BuildScore(word string, sum int) int {
+	if word == "" {
+		return sum
 	}
-	return score
+
+	first, rest := word[0], word[1:]
+	sum += values[string(first)]
+	return BuildScore(rest, sum)
 }
