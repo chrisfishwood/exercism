@@ -2,12 +2,10 @@ package grains
 
 import (
 	"errors"
-	"fmt"
 )
 
 // Square -
 func Square(val int) (uint64, error) {
-	fmt.Printf("Square called with %d\n", val)
 	var previous uint64 = 1
 	var grains uint64
 	if val <= 0 || val > 64 {
@@ -25,9 +23,11 @@ func Square(val int) (uint64, error) {
 
 // Total -
 func Total() uint64 {
-	//var squerror error
-	var total uint64 = 1
-	fmt.Println("calling total")
-	total, _ = Square(64)
+	var val uint64 = 1
+	var total uint64
+	for i := 0; i <= 64; i++ {
+		val, _ = Square(i)
+		total = total + val
+	}
 	return total
 }

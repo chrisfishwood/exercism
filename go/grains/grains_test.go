@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-/* func TestSquare(t *testing.T) {
+func TestSquare(t *testing.T) {
 	for _, test := range squareTests {
 		actualVal, actualErr := Square(test.input)
 
@@ -24,7 +24,7 @@ import (
 		}
 		t.Logf("PASS: %s", test.description)
 	}
-} */
+}
 
 func TestTotal(t *testing.T) {
 	var expected uint64 = 18446744073709551615
