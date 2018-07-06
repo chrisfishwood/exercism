@@ -14,28 +14,23 @@ func Valid(word string) bool {
 	}
 
 	isOdd := len(word)%2 == 1
-	var reversedString bytes.Buffer
+	sum := 0
 
 	for i := 0; i < len(word); i++ {
-		stringDigit := string(word[i])
+		digit, _ := strconv.Atoi(string(word[i]))
+
 		if isOdd && i%2 == 0 {
-			reversedString.WriteString(stringDigit)
+			sum = sum + digit
 			continue
 		}
-		intDouble, _ := strconv.Atoi(stringDigit)
-		intDouble = intDouble * 2
-		if intDouble > 9 {
-			intDouble = intDouble - 9
+
+		digit = digit * 2
+		if digit > 9 {
+			digit = digit - 9
 		}
-		reversedString.WriteString(strconv.FormatInt(int64(intDouble), 10))
+		sum = sum + digit
 	}
 
-	word = reversedString.String()
-	sum := 0
-	for i := 0; i < len(word); i++ {
-		sumInt, _ := strconv.Atoi(string(word[i]))
-		sum = sum + sumInt
-	}
 	return sum%10 == 0
 }
 
